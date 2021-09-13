@@ -1,6 +1,7 @@
 body {
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
+  background-color: #fdfefe !important;
 }
 .main {
   margin-left: 20px;
@@ -48,7 +49,7 @@ body {
 .single-product {
   padding: 10px;
   transition: 0.6s;
-  background-color: rgba(230, 236, 235, 0.89);
+  background-color: #f5f5f5;
   height: 450px;
   margin: 5px;
 }
@@ -102,4 +103,33 @@ body {
 }
 .btn {
   margin-left: 0;
+}
+#container {
+  max-width: 100%;
+  margin-bottom: 20px;
+  border: 2px solid #f5f5f5;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+#container:hover {
+  box-shadow: 4px 4px 7px gray;
+  border-radius: 10px;
+  border: 1px solid cyan;
+}
+#display-img {
+  width: 350px;
+  height: 250px;
+}
+.common-color {
+  color: #d35400;
+}
+#rating-icon {
+  display: flex;
+}
+.fa {
+  color: orange;
+}
+#details-footer {
+  display: flex;
+  justify-content: space-between;
 }

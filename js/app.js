@@ -15,13 +15,18 @@ const showProducts = (products) => {
     div.innerHTML = `<div class="single-product card h-100">
       <div>
     <img class="product-image" src=${image}></img>
-      <h3>${product.title.slice(0,50)}</h3>
+      <h3>${product.title.slice(0, 50)}</h3>
       <p>Category: ${product.category}</p>
       <h3>Price: $ ${product.price}</h3>
         <h4>Rating: <span class="rating"> ${product.rating.rate}</span></h4>
           <h4> Reviews: <span class="rating">${product.rating.count}</span></h4>
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger" onclick="singleProductLoad(${product.id})">Details</button></div></div>
+      <button onclick="addToCart(${product.id},${
+      product.price
+    })" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
+ <button type="button" id="details-btn" class="btn btn-danger" onclick="singleProductLoad(${
+   product.id
+ })">Details</button>
+      </div></div>
       `;
     
     document.getElementById("all-products").appendChild(div);
@@ -82,9 +87,51 @@ const updateTotal = () => {
 };
 loadProducts();
 
+// fetch API from fakestore
 const singleProductLoad = id => {
   const url = `https://fakestoreapi.com/products/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((json) => console.log(json));
+    .then((json) => productDislpayDetail(json));
+}
+//  Product Display Load
+const productDislpayDetail = productInfo => {
+  console.log(productInfo);
+  const cardContainer = document.querySelector('#container');
+  cardContainer.textContent = "";
+  const div= document.createElement('div');
+  div.classList.add('card', 'mb-3');
+  div.innerHTML = `
+            <div class="row g-0">
+            <div class="col-md-4">
+              <img src= "${productInfo.image}" class="img-fluid rounded-start" id="display-img" alt="..." />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+              <h2 class="card-heading"> <spna class="common-color">${productInfo.category}</span></h2>
+                <h3 class="card-title">${productInfo.title}</h3>
+                <p class="card-text">
+                ${productInfo.description}
+                </p>
+                <div id="details-footer">
+                <h2 class="card-text">
+                  <strong class="text-muted">Price : $ <span class="common-color">${productInfo.price}</strong>
+                </h2>
+                <div id="rating-icon">
+                <h3>Rating :
+                <i class="fa fa-star "></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star" style="color:gray;"></i>
+                (<span class="common-color">${productInfo.rating.rate}</span>)
+                </h3>
+               </div>
+               <h3> Review : <span class="common-color"> ${productInfo.rating.count}</span></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+  `;
+  cardContainer.appendChild(div);
 }
