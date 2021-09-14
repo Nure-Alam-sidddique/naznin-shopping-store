@@ -95,12 +95,13 @@ const singleProductLoad = id => {
     .then((json) => productDislpayDetail(json));
 }
 //  Product Display Load
+
 const productDislpayDetail = productInfo => {
   console.log(productInfo);
   const cardContainer = document.querySelector('#container');
   cardContainer.textContent = "";
   const div= document.createElement('div');
-  div.classList.add('card', 'mb-3');
+  div.classList.add('card', 'product-details', 'mb-3');
   div.innerHTML = `
             <div class="row g-0">
             <div class="col-md-4">
