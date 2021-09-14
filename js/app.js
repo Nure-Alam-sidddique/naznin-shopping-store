@@ -34,6 +34,7 @@ const showProducts = (products) => {
 };
 let count = 0;
 const addToCart = (id, price) => {
+  document.querySelector('#container').textContent = "";
   count = count + 1;
   updatePrice("price", price);
 
@@ -97,7 +98,7 @@ const singleProductLoad = id => {
 //  Product Display Load
 
 const productDislpayDetail = productInfo => {
-  console.log(productInfo);
+  // console.log(productInfo);
   const cardContainer = document.querySelector('#container');
   cardContainer.textContent = "";
   const div= document.createElement('div');
@@ -115,20 +116,20 @@ const productDislpayDetail = productInfo => {
                 ${productInfo.description}
                 </p>
                 <div id="details-footer">
-                <h2 class="card-text">
-                  <strong class="text-muted">Price : $ <span class="common-color">${productInfo.price}</strong>
-                </h2>
+                <h4 class="card-text">
+                  <strong class="text-muted">Price : $<span class="common-color">${productInfo.price}</span></strong>
+                </h4>
                 <div id="rating-icon">
-                <h3>Rating :
+                <h4>Rating :
                 <i class="fa fa-star "></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star" style="color:gray;"></i>
                 (<span class="common-color">${productInfo.rating.rate}</span>)
-                </h3>
+                </h4>
                </div>
-               <h3> Review : <span class="common-color"> ${productInfo.rating.count}</span></h3>
+               <h4> Review : <span class="common-color"> ${productInfo.rating.count}</span></h4>
                 </div>
               </div>
             </div>
